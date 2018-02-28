@@ -1,0 +1,8 @@
+[package]
+name = "embedded-hal-time"
+version = "0.1.0"
+authors = ["TheZoq2 <frans.skarman@gmail.com>"]
+
+[dependencies]
+nb = "0.1.1"
+embedded-hal = "0.1.1"
