@@ -1,5 +1,4 @@
 #![no_std]
-#![feature(never_type)]
 
 extern crate nb;
 
@@ -17,6 +16,24 @@ pub struct Millisecond(pub u32);
 #[derive(Clone, Copy)]
 pub struct Microsecond(pub u32);
 
+// Conversions for `Milliseconds`
+impl From<Second> for Millisecond {
+    fn from(other: Second) -> Self {
+        Millisecond(other.0 * 1000)
+    }
+}
+
+// Conversions for `Microsecond`
+impl From<Millisecond> for Microsecond {
+    fn from(other: Millisecond) -> Self {
+        Microsecond(other.0 * 1000)
+    }
+}
+impl From<Second> for Microsecond {
+    fn from(other: Second) -> Self {
+        Microsecond(other.0 * 1_000_000)
+    }
+}
 
 /**
   A monotonic timer that can be used to measure time passed. It should count from 0 to
